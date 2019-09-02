@@ -1,16 +1,23 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Authentication Routes...
+Route::get('auth/google', 'Auth\GoogleLoginController@redirectToProvider')->name('auth.google');
+Route::get('auth/google/callback', 'Auth\GoogleLoginController@handleProviderCallback')->name('auth.google.callback');
+Route::get('auth/logout', 'Auth\LogoutController@logout')->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
+// Home page
+Route::get('welcome', 'WelcomeController@index')->name('welcome');
+Route::get('home', 'HomeController@index')->name('home');
+
+// Authenticated Routes
+Route::group(['middleware' => 'auth'], function () {
+
+    // Cards
+    Route::get('cards', 'CardController@index')->name('cards.index');
+    Route::get('cards/create', 'CardController@create')->name('cards.create');
+    Route::post('cards', 'CardController@store')->name('cards.store');
+    Route::get('cards/{ulid}', 'CardController@show')->name('cards.show');
+    Route::get('cards/{ulid}/edit', 'CardController@edit')->name('cards.edit');
+    Route::post('cards/{ulid}', 'CardController@update')->name('cards.update');
+    Route::delete('cards/{ulid}', 'CardController@destroy')->name('cards.destroy');
 });
