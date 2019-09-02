@@ -34,5 +34,12 @@
         <server name="APP_PACKAGES_CACHE" value="bootstrap/cache/packages.phpunit.php"/>
         <server name="APP_ROUTES_CACHE" value="bootstrap/cache/routes.phpunit.php"/>
         <server name="APP_EVENTS_CACHE" value="bootstrap/cache/events.phpunit.php"/>
+        <server name="DB_CONNECTION" value="pgsql"/>
+        <server name="DB_HOST" value="postgres"/>
+        <server name="DB_PORT" value="5432"/>
+        <server name="DB_USERNAME" value="flashcards"/>
+        <server name="DB_PASSWORD" value="secret"/>
+        <server name="DB_DATABASE" value="flashcards_test"/>
+
     </php>
 </phpunit>
