@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: docker/php
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/var/www
+    depends_on:
+      - postgres
+
+  postgres:
+    build:
+      context: docker/postgres
+    volumes:
+      - ./docker/volumes/postgres/data:/var/lib/postgresql/data
+    ports:
+      - '54322:5432'
+    environment:
+      - EDITOR=vim
