@@ -4,10 +4,31 @@ namespace App;
 
 use App\Concerns\UlidAttribute;
 use Illuminate\Database\Eloquent\Model;
+use App\Searchable\AutomaticSearchIndices;
 
 class Card extends Model
 {
     use UlidAttribute;
+
+    /*
+     * Use model events to synchronize search indices
+     */
+    use AutomaticSearchIndices;
+
+    /**
+     * Create a weighted index structure for this model.
+     *
+     * @return array
+     */
+    public function composeSearchIndex()
+    {
+        return [
+            'A' => $this->title,
+            'B' => $this->body,
+            'C' => '',
+            'D' => '',
+        ];
+    }
 
     /**
      * The table associated with the model.

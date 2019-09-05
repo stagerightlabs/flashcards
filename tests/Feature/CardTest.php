@@ -46,10 +46,10 @@ class CardTest extends TestCase
             'subject_type' =>  'App\Card',
         ]);
 
-        // $card = Card::first();
-        // $searchIndex = SearchIndex::first();
-        // $this->assertTrue($searchIndex->subject->is($card));
-        // $this->assertNotNull($searchIndex->vector);
+        $card = Card::first();
+        $searchIndex = SearchIndex::first();
+        $this->assertTrue($searchIndex->subject->is($card));
+        $this->assertNotNull($searchIndex->vector);
     }
 
     public function test_a_user_can_update_a_card()
@@ -83,10 +83,10 @@ class CardTest extends TestCase
             'source' => 'New Source',
         ]);
 
-        // $activity = DB::table('activity_log')
-        //     ->where('subject_id', $card->id)
-        //     ->where('subject_type', 'App\Card')
-        //     ->get();
+        $activity = DB::table('activity_log')
+            ->where('subject_id', $card->id)
+            ->where('subject_type', 'App\Card')
+            ->get();
 
         // $this->assertEquals(2, $activity->count());
         // $searchIndex = SearchIndex::first();
@@ -123,10 +123,10 @@ class CardTest extends TestCase
             'subject_id' => $card->id,
             'subject_type' => 'App\Card',
         ]);
-        // $this->assertDatabaseMissing('search_indices', [
-        //     'searchable_id' => $card->id,
-        //     'searchable_type' => 'App\Card',
-        // ]);
+        $this->assertDatabaseMissing('search_indices', [
+            'searchable_id' => $card->id,
+            'searchable_type' => 'App\Card',
+        ]);
     }
 
     public function test_a_user_cannot_remove_another_users_card()
@@ -197,10 +197,10 @@ class CardTest extends TestCase
             'subject_id' => $card->id,
             'subject_type' => 'App\Card',
         ]);
-        // $this->assertDatabaseMissing('search_indices', [
-        //     'searchable_id' => $card->id,
-        //     'searchable_type' => 'App\Card',
-        // ]);
+        $this->assertDatabaseMissing('search_indices', [
+            'searchable_id' => $card->id,
+            'searchable_type' => 'App\Card',
+        ]);
     }
 
     // public function test_guests_cannot_add_cards()
