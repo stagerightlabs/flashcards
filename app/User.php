@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Tenant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
