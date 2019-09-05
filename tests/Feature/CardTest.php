@@ -42,9 +42,9 @@ class CardTest extends TestCase
             'domain_id' => $domain->id,
             'created_by' => $user->id,
         ]);
-        // $this->assertDatabaseHas('activity_log', [
-        //     'subject_type' =>  'App\Card',
-        // ]);
+        $this->assertDatabaseHas('activity_log', [
+            'subject_type' =>  'App\Card',
+        ]);
 
         // $card = Card::first();
         // $searchIndex = SearchIndex::first();
@@ -97,6 +97,7 @@ class CardTest extends TestCase
 
     public function test_a_user_can_remove_their_own_cards()
     {
+        $this->withoutExceptionHandling();
         $tenant = factory(Tenant::class)->create();
         $domain = factory(Domain::class)->create([
             'tenant_id' => $tenant->id,
@@ -118,10 +119,10 @@ class CardTest extends TestCase
         $this->assertDatabaseMissing('cards', [
             'ulid' => $card->ulid,
         ]);
-        // $this->assertDatabaseMissing('activity_log', [
-        //     'subject_id' => $card->id,
-        //     'subject_type' => 'App\Card',
-        // ]);
+        $this->assertDatabaseMissing('activity_log', [
+            'subject_id' => $card->id,
+            'subject_type' => 'App\Card',
+        ]);
         // $this->assertDatabaseMissing('search_indices', [
         //     'searchable_id' => $card->id,
         //     'searchable_type' => 'App\Card',
@@ -192,10 +193,10 @@ class CardTest extends TestCase
         $this->assertDatabaseMissing('cards', [
             'ulid' => $card->ulid,
         ]);
-        // $this->assertDatabaseMissing('activity_log', [
-        //     'subject_id' => $card->id,
-        //     'subject_type' => 'App\Card',
-        // ]);
+        $this->assertDatabaseMissing('activity_log', [
+            'subject_id' => $card->id,
+            'subject_type' => 'App\Card',
+        ]);
         // $this->assertDatabaseMissing('search_indices', [
         //     'searchable_id' => $card->id,
         //     'searchable_type' => 'App\Card',

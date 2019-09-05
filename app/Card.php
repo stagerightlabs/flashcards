@@ -22,4 +22,14 @@ class Card extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * The activity logs for this card.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function activities()
+    {
+        return $this->morphMany(\Spatie\Activitylog\Models\Activity::class, 'subject');
+    }
 }
