@@ -1,5 +1,10 @@
 {
     "files.exclude": {
         "docker/volumes/postgres/": true
-    }
+    },
+    "cSpell.words": [
+        "crockford's",
+        "ulid",
+        "ulids"
+    ]
 }
