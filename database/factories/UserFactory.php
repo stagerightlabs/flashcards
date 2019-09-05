@@ -13,6 +13,7 @@ $factory->define(User::class, function (Faker $faker) {
         'tenant_id' => function () {
             return factory(Tenant::class)->create()->id;
         },
+        'current_domain_id' => null,
     ];
 });
 

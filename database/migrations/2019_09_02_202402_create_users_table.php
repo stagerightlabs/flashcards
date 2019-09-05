@@ -20,10 +20,12 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->unsignedInteger('tenant_id');
+            $table->unsignedInteger('current_domain_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('tenant_id')->references('id')->on('tenants');
+            $table->foreign('current_domain_id')->references('id')->on('domains');
         });
     }
 
