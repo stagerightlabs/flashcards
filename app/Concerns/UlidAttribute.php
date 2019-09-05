@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Based on Rorecek\Ulid\HasUlid
- * https://github.com/rorecek/laravel-ulid/blob/master/src/HasUlid.php
+ * https://github.com/rorecek/laravel-ulid/blob/master/src/HasUlid.php.
  */
 trait UlidAttribute
 {
@@ -16,7 +16,7 @@ trait UlidAttribute
         parent::boot();
 
         static::creating(function ($model) {
-            if (!$model->ulid) {
+            if (! $model->ulid) {
                 $model->ulid = Ulid::generate();
             }
         });

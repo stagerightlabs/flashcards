@@ -3,7 +3,7 @@
 namespace App;
 
 /**
- * Generate ULIDs: https://github.com/ulid/spec
+ * Generate ULIDs: https://github.com/ulid/spec.
  *
  * Borrowed from Rorecek\Ulid
  * https://github.com/rorecek/laravel-ulid/blob/master/src/Ulid.php
@@ -16,7 +16,8 @@ class Ulid
     private $lastTime = null;
 
     public function __construct()
-    { }
+    {
+    }
 
     public function generate(): string
     {
@@ -43,7 +44,7 @@ class Ulid
         // Convert timestamp to Crockford's Base32
         for ($i = 1; $i <= 10; $i++) {
             $timeChars = self::BASE32_SYMBOL_SET[$now % 32] . $timeChars;
-            $now = (int) floor($now  / 32);
+            $now = (int)floor($now / 32);
         }
 
         // Generate random string

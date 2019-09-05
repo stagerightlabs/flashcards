@@ -14,7 +14,7 @@ class CreateSearchIndicesTable extends Migration
     public function up()
     {
         Schema::create('search_indices', function (Blueprint $table) {
-            $table->bigIncrements('id');;
+            $table->bigIncrements('id');
             $table->morphs('searchable');
             $table->string('link');
             $table->jsonb('meta')->nullable();
