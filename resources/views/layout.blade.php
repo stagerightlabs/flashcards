@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Flashcards</title>
   <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+  @livewireAssets
 </head>
 
 <body class="bg-gray-300 w-full h-full">
