@@ -18,7 +18,7 @@ class DomainTest extends TestCase
     {
         $tenant = factory(Tenant::class)->create();
         $user = factory(User::class)->create([
-            'tenant_id' => $tenant->id,
+        'tenant_id' => $tenant->id,
         ]);
         $this->actingAs($user);
 
@@ -27,10 +27,10 @@ class DomainTest extends TestCase
         ]);
 
         $response->assertSessionHas('success');
-        $this->assertDatabaseHas('domains', [
-            'name' => 'new-domain',
-            'tenant_id' => $tenant->id,
-        ]);
+        $domain = Domain::first();
+        $this->assertEquals('new-domain', $domain->name);
+        $this->assertEquals($tenant->id, $domain->tenant_id);
+        $this->assertEquals($user->fresh()->current_domain_id, $domain->id);
         $this->assertDatabaseHas('activity_log', [
             'subject_type' =>  'App\Domain',
         ]);

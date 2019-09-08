@@ -15,7 +15,7 @@ class DomainController extends Controller
      */
     public function create()
     {
-        //
+        return view('domains.create');
     }
 
     /**
@@ -45,8 +45,9 @@ class DomainController extends Controller
             ])
             ->log('created');
 
-        Session::flash('success', 'Your new knowledge domain is ready.');
-        return redirect()->back();
+        $request->user()->setDomain($domain);
+        $request->session()->flash('success', 'Your new knowledge domain is ready.');
+        return redirect()->route('home');
     }
 
     /**

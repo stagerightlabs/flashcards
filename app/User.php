@@ -44,4 +44,28 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    /**
+     * The domain the user is currently operating in.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function domain()
+    {
+        return $this->belongsTo(Domain::class, 'current_domain_id');
+    }
+
+    /**
+     * Set the user's currently active domain.
+     *
+     * @param Domain $domain
+     * @return Domain
+     */
+    public function setDomain(Domain $domain)
+    {
+        $this->current_domain_id = $domain->id;
+        $this->save();
+
+        return $domain;
+    }
 }
