@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Card;
 use App\Concerns\UlidAttribute;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +17,7 @@ class Domain extends Model
     protected $guarded = [];
 
     /**
-     * The cards that belong to this domain
+     * The cards that belong to this domain.
      *
      * @return void
      */

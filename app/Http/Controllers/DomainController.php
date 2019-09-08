@@ -21,13 +21,13 @@ class DomainController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $this->authorize('create', Domain::class);
@@ -52,7 +52,7 @@ class DomainController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  string $ulid
+     * @param string $ulid
      * @return \Illuminate\Http\Response
      */
     public function edit($ulid)
@@ -63,8 +63,8 @@ class DomainController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string $ulid
+     * @param \Illuminate\Http\Request $request
+     * @param string $ulid
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $ulid)
@@ -95,7 +95,7 @@ class DomainController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string $ulid
+     * @param string $ulid
      * @return \Illuminate\Http\Response
      */
     public function destroy($ulid)
@@ -105,7 +105,7 @@ class DomainController extends Controller
         $this->authorize('delete', $domain);
 
         if ($domain->cards()->count() > 0) {
-            return Session::flash('warning', "Domains with cards cannot be removed.");
+            return Session::flash('warning', 'Domains with cards cannot be removed.');
             return redirect()->back();
         }
 
