@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Domain;
 use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model

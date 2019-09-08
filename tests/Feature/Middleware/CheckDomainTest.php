@@ -8,7 +8,6 @@ use App\Tenant;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Http\Middleware\CheckDomain;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CheckDomainTest extends TestCase
@@ -32,7 +31,8 @@ class CheckDomainTest extends TestCase
             return $user;
         });
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertNull($response);
     }
@@ -54,7 +54,8 @@ class CheckDomainTest extends TestCase
             return $user;
         });
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertNull($response);
         $this->assertEquals($domain->id, $user->fresh()->current_domain_id);
@@ -72,7 +73,8 @@ class CheckDomainTest extends TestCase
             return $user;
         });
 
-        $response = $middleware->handle($request, function () { });
+        $response = $middleware->handle($request, function () {
+        });
 
         $this->assertEquals($response->getStatusCode(), 302);
         $this->assertEquals('http://localhost/domains/create', $response->getTargetUrl());

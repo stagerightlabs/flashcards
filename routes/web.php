@@ -8,7 +8,6 @@ Route::get('auth/logout', 'Auth\LogoutController@logout')->name('logout');
 // Home page
 Route::get('welcome', 'WelcomeController@index')->name('welcome');
 
-
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
 
