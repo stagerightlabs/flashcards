@@ -111,15 +111,15 @@ class CardController extends Controller
         $card->source = $request->get('source', null);
         $card->save();
 
-        // activity()
-        //     ->causedBy($request->user())
-        //     ->performedOn($card)
-        //     ->withProperties([
-        //         'title' => $card->title,
-        //         'body' => $card->body,
-        //         'source' => $card->source,
-        //     ])
-        //     ->log('updated');
+        activity()
+            ->causedBy($request->user())
+            ->performedOn($card)
+            ->withProperties([
+                'title' => $card->title,
+                'body' => $card->body,
+                'source' => $card->source,
+            ])
+            ->log('updated');
 
         Session::flash('success', 'Card updated.');
         return redirect()->back();

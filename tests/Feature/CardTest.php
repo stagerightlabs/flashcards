@@ -87,11 +87,11 @@ class CardTest extends TestCase
             ->where('subject_type', 'App\Card')
             ->get();
 
-        // $this->assertEquals(2, $activity->count());
-        // $searchIndex = SearchIndex::first();
-        // $this->assertTrue($searchIndex->subject->is($card));
-        // $this->assertNotNull($searchIndex->vector);
-        // $this->assertEquals(1, SearchIndex::count());
+        $this->assertEquals(2, $activity->count());
+        $searchIndex = SearchIndex::first();
+        $this->assertTrue($searchIndex->subject->is($card));
+        $this->assertNotNull($searchIndex->vector);
+        $this->assertEquals(1, SearchIndex::count());
     }
 
     public function test_a_user_can_remove_their_own_cards()
@@ -155,14 +155,14 @@ class CardTest extends TestCase
         $this->assertDatabaseHas('cards', [
             'ulid' => $card->ulid,
         ]);
-        // $this->assertDatabaseHas('activity_log', [
-        //     'subject_id' => $card->id,
-        //     'subject_type' => 'App\Card',
-        // ]);
-        // $this->assertDatabaseHas('search_indices', [
-        //     'searchable_id' => $card->id,
-        //     'searchable_type' => 'App\Card',
-        // ]);
+        $this->assertDatabaseHas('activity_log', [
+            'subject_id' => $card->id,
+            'subject_type' => 'App\Card',
+        ]);
+        $this->assertDatabaseHas('search_indices', [
+            'searchable_id' => $card->id,
+            'searchable_type' => 'App\Card',
+        ]);
     }
 
     public function test_an_admin_can_remove_a_card()
@@ -202,18 +202,18 @@ class CardTest extends TestCase
         ]);
     }
 
-    // public function test_guests_cannot_add_cards()
-    // {
-    //     $response = $this->post(route('cards.store'), [
-    //         'title' => 'Photosynthesis',
-    //         'body' => 'A chemical process whereby plants convert sunlight into energy.',
-    //     ]);
+    public function test_guests_cannot_add_cards()
+    {
+        $response = $this->post(route('cards.store'), [
+            'title' => 'Photosynthesis',
+            'body' => 'A chemical process whereby plants convert sunlight into energy.',
+        ]);
 
-    //     $response->assertRedirect();
-    //     $this->assertDatabaseMissing('cards', [
-    //         'title' => 'Photosynthesis',
-    //         'body' => 'A chemical process whereby plants convert sunlight into energy.',
-    //     ]);
-    //     $this->assertEquals(0, SearchIndex::count());
-    // }
+        $response->assertRedirect();
+        $this->assertDatabaseMissing('cards', [
+            'title' => 'Photosynthesis',
+            'body' => 'A chemical process whereby plants convert sunlight into energy.',
+        ]);
+        $this->assertEquals(0, SearchIndex::count());
+    }
 }
