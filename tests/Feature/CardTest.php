@@ -33,7 +33,6 @@ class CardTest extends TestCase
             'domain_id' => $domain->id,
         ]);
 
-        $response->assertRedirect();
         $response->assertSessionHas('success');
         $this->assertDatabaseHas('cards', [
             'title' => 'Photosynthesis',

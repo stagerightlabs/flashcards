@@ -15,7 +15,7 @@ class CardPolicy
      *
      * @param User $user
      * @param string $ability
-     * @return void
+     * @return boolean|void
      */
     public function before($user, $ability)
     {

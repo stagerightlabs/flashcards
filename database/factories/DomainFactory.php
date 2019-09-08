@@ -12,3 +12,12 @@ $factory->define(Domain::class, function (Faker $faker) {
         },
     ];
 });
+
+$factory->afterCreating(Domain::class, function ($domain) {
+    activity()
+        ->performedOn($domain)
+        ->withProperties([
+            'name' => $domain->name,
+        ])
+        ->log('created');
+});

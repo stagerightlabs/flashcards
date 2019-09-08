@@ -1,6 +1,7 @@
 <?php
 
 use App\Card;
+use App\User;
 use App\Domain;
 use Faker\Generator as Faker;
 

@@ -12,6 +12,11 @@ Route::get('home', 'HomeController@index')->name('home');
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
 
+    // Domains
+    Route::post('domains', 'DomainController@store')->name('domains.store');
+    Route::post('domains/{ulid}', 'DomainController@update')->name('domains.update');
+    Route::delete('domains/{ulid}', 'DomainController@destroy')->name('domains.destroy');
+
     // Cards
     Route::get('cards', 'CardController@index')->name('cards.index');
     Route::get('cards/create', 'CardController@create')->name('cards.create');
