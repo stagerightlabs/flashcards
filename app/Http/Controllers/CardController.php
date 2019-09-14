@@ -44,23 +44,13 @@ class CardController extends Controller
 
         $this->authorize('create', Card::class);
 
-        $card = Card::create([
+        Card::create([
             'title' => $request->get('title'),
             'body' => $request->get('body'),
             'source' => $request->get('source', null),
             'created_by' => $request->user()->id,
             'domain_id' => $request->get('domain_id'),
         ]);
-
-        activity()
-            ->causedBy($request->user())
-            ->performedOn($card)
-            ->withProperties([
-                'title' => $card->title,
-                'body' => $card->body,
-                'source' => $card->source,
-            ])
-            ->log('created');
 
         Session::flash('success', 'Your new card has been created.');
         return redirect()->back();
@@ -111,16 +101,6 @@ class CardController extends Controller
         $card->source = $request->get('source', null);
         $card->save();
 
-        activity()
-            ->causedBy($request->user())
-            ->performedOn($card)
-            ->withProperties([
-                'title' => $card->title,
-                'body' => $card->body,
-                'source' => $card->source,
-            ])
-            ->log('updated');
-
         Session::flash('success', 'Card updated.');
         return redirect()->back();
     }
@@ -137,7 +117,6 @@ class CardController extends Controller
 
         $this->authorize('delete', $card);
 
-        $card->activities()->delete();
         $card->delete();
 
         return redirect()->back();

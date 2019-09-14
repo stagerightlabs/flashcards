@@ -18,14 +18,3 @@ $factory->define(Card::class, function (Faker $faker) {
         },
     ];
 });
-
-$factory->afterCreating(Card::class, function ($card) {
-    activity()
-        ->performedOn($card)
-        ->withProperties([
-            'title' => $card->title,
-            'body' => $card->body,
-            'source' => $card->source,
-        ])
-        ->log('created');
-});

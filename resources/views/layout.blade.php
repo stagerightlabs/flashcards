@@ -12,8 +12,6 @@
 
 <body class="bg-gray-300 w-full h-full">
   @yield('content')
-
-  {!! dd(session()->all()) !!}
 </body>
 
 <script src="{{ mix('/js/app.js') }}"></script>

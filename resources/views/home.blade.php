@@ -1,11 +1,9 @@
 @extends('layout')
 
 @section('content')
-<h1>Home Page</h1>
-<div>
-  <p>Domain: {{ $domain->name }}</p>
-  @livewire('counter')
-</div>
+<h1>{{ $domain->name }}</h1>
+@livewire('cards')
+@livewire('create-card')
 <div>
   <p>
     You are logged in!

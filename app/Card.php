@@ -53,4 +53,14 @@ class Card extends Model
     {
         return $this->morphMany(\Spatie\Activitylog\Models\Activity::class, 'subject');
     }
+
+    /**
+     * The user that created this card
+     *
+     * @return void
+     */
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

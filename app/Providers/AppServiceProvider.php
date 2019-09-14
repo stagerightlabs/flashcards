@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Card;
 use App\Ulid;
+use App\Observers\CardObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Card::observe(CardObserver::class);
     }
 }
