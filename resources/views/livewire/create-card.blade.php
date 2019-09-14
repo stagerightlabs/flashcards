@@ -26,6 +26,6 @@
   <button wire:click="createCard">Save</button>
   <button wire:click="cancelCard">Cancel</button>
   @else
-  <button wire:click="toggle">Add Card</button>
+  <button wire:click="toggle">@svg('add-outline', 'w-8')</button>
   @endif
 </div>
