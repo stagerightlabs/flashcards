@@ -12,7 +12,7 @@ Route::get('welcome', 'WelcomeController@index')->name('welcome');
 Route::group(['middleware' => 'auth'], function () {
 
     // Home
-    Route::get('home', 'HomeController@index')->name('home')->middleware('domain');
+    Route::get('/', 'HomeController@index')->name('home')->middleware('domain');
 
     // Domains
     Route::get('domains/create', 'DomainController@create')->name('domains.create');
