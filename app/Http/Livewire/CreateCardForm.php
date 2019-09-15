@@ -5,12 +5,13 @@ namespace App\Http\Livewire;
 use App\Card;
 use Livewire\Component;
 
-class CreateCard extends Component
+class CreateCardForm extends Component
 {
     public $title;
     public $body;
     public $source;
     public $visible = false;
+    protected $listeners = ['showCreateCardModal' => 'showModal'];
 
     public function createCard()
     {
@@ -34,6 +35,11 @@ class CreateCard extends Component
         $this->emit('cardCreated', $card->ulid);
     }
 
+    public function showModal()
+    {
+        $this->visible = true;
+    }
+
     public function cancelCard()
     {
         $this->visible = false;
@@ -42,13 +48,8 @@ class CreateCard extends Component
         $this->source = '';
     }
 
-    public function toggle()
-    {
-        $this->visible = !$this->visible;
-    }
-
     public function render()
     {
-        return view('livewire.create-card');
+        return view('livewire.create-card-form');
     }
 }

@@ -10,7 +10,7 @@
   @livewireAssets
 </head>
 
-<body class="bg-gray-300 w-full h-full">
+<body class="bg-gray-400 w-full h-full">
   @yield('content')
 </body>
 
