@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model
@@ -21,5 +22,15 @@ class Tenant extends Model
     public function domains()
     {
         return $this->hasMany(Domain::class)->orderBy('created_at');
+    }
+
+    /**
+     * The users that belong to this tenancy
+     *
+     * @return HasMany
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class)->orderBy('created_at');
     }
 }
