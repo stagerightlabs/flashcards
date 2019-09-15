@@ -1,12 +1,14 @@
-<div class="rolodex flex flex-wrap mx-auto px-4">
+<div class="rolodex p-4">
   @foreach($cards as $card)
-  <div class="w-full md:w-1/3">
-    <div class="card font-serif bg-gray-100 text-gray-800 text-xl shadow m-2">
-      <header class="text-2xl p-1 px-2">{{ $card->title }}</header>
-      <div class="p-2">
+  <div class="card">
+    <div class="font-serif bg-gray-100 text-gray-800 text-xl shadow">
+      <header class="text-3xl p-1 px-2">{{ $card->title }}</header>
+      <div class="px-2 p-1">
         <p>{{ $card->body }}</p>
-        <footer>{{ $card->source }}</footer>
       </div>
+      @if ($card->source)
+      <footer class="text-base p-2 text-gray-700 bg-gray-200">{{ $card->source }}</footer>
+      @endif
     </div>
   </div>
   @endforeach
