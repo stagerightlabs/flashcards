@@ -27,7 +27,7 @@
       </form>
       <footer class="flex justify-between">
         <button wire:click="createCard" class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Save</button>
-        <button wire:click="cancelCard" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+        <button wire:click="closeCardModal" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
       </footer>
     </div>
   </div>

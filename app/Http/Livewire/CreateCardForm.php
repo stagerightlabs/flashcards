@@ -28,11 +28,8 @@ class CreateCardForm extends Component
             'domain_id' => auth()->user()->current_domain_id,
         ]);
 
-        $this->title = '';
-        $this->body = '';
-        $this->source = '';
-
         $this->emit('cardCreated', $card->ulid);
+        $this->closeCardModal();
     }
 
     public function showModal()
@@ -40,7 +37,7 @@ class CreateCardForm extends Component
         $this->visible = true;
     }
 
-    public function cancelCard()
+    public function closeCardModal()
     {
         $this->visible = false;
         $this->title = '';
