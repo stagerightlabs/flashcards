@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Card::class, function (Faker $faker) {
     return [
-        'title' => $faker->word(),
+        'title' => $faker->words(mt_rand(1, 5), true),
         'body' => $faker->paragraph(),
-        'source' => $faker->url(),
+        'source' => $faker->optional()->url(),
         'created_by' => function () {
             return factory(User::class)->create()->id;
         },
