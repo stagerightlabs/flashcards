@@ -1,13 +1,28 @@
-@tailwind base;
+  @tailwind base;
 
 @tailwind components;
 
-.rolodex { /* Masonry container */
-  column-count: 3;
+/* Masonry styles: https://w3bits.com/css-masonry/ */
+.rolodex {
+  column-count: 1;
   column-gap: 1em;
 }
 
-.rolodex .card { /* Masonry bricks or child elements */
+@screen md {
+  .rolodex {
+    column-count: 2;
+    column-gap: 1em;
+  }
+}
+
+@screen lg {
+  .rolodex {
+    column-count: 3;
+    column-gap: 1em;
+  }
+}
+
+.rolodex .card {
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
