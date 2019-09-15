@@ -7,7 +7,7 @@
 </header>
 @livewire('create-card-form')
 @livewire('cards')
-<div class="fixed bottom-0 right-0 w-full md:w-auto md:m-4 bg-gray-100 p-2 flex md:rounded-tl-full md:rounded-bl-full items-center justify-around">
+<div class="fixed bottom-0 right-0 w-full md:w-auto md:m-4 bg-gray-300 p-2 flex md:rounded-tl-full md:rounded-bl-full items-center justify-around shadow-lg">
   <img src="{{ $user->avatar }}" alt="avatar" class="w-12 rounded-full mr-4" title="{{ $user->email }}">
   <p><a href="{{ route('logout') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded h-8">Log out</a></p>
 </div>
