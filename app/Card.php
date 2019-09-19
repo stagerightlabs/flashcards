@@ -45,6 +45,20 @@ class Card extends Model
     protected $guarded = [];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['snippet', 'is_longer_than_snippet'];
+
+    /**
+     * The length of computed snippets.
+     *
+     * @var integer
+     */
+    protected $snippetLength = 256;
+
+    /**
      * The activity logs for this card.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
@@ -62,5 +76,25 @@ class Card extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /**
+     * Compute a snippet for this card based on the body content.
+     *
+     * @return string
+     */
+    public function getSnippetAttribute()
+    {
+        return substr($this->body, 0, $this->snippetLength);
+    }
+
+    /**
+     * Is the content of this card longer than snippet length?
+     *
+     * @return bool
+     */
+    public function getIsLongerThanSnippetAttribute()
+    {
+        return strlen($this->body) > $this->snippetLength;
     }
 }

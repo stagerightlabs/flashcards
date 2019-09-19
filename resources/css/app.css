@@ -28,4 +28,21 @@
   width: 100%;
 }
 
+/* Cards */
+.card {
+  @apply font-serif bg-gray-100 text-gray-800 text-xl shadow rounded-sm;
+}
+
+.card header {
+  @apply text-3xl py-2 px-3;
+}
+
+.card article {
+  @apply px-3  pb-3 pt-0;
+}
+
+.card footer {
+  @apply text-base p-2 text-gray-700 bg-gray-200;
+}
+
 @tailwind utilities;
