@@ -11,7 +11,10 @@ class CreateCardForm extends Component
     public $body;
     public $source;
     public $visible = false;
-    protected $listeners = ['showCreateCardModal' => 'showModal'];
+    protected $listeners = [
+        'requestCreateCardModal' => 'showCreateCardModal',
+        'requestModalClosure' => 'closeCardModal',
+    ];
 
     public function createCard()
     {
@@ -32,7 +35,7 @@ class CreateCardForm extends Component
         $this->closeCardModal();
     }
 
-    public function showModal()
+    public function showCreateCardModal()
     {
         $this->visible = true;
     }

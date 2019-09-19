@@ -8,7 +8,7 @@ class CreateCardButton extends Component
 {
     public function click()
     {
-        $this->emit('showCreateCardModal');
+        $this->emit('requestCreateCardModal');
     }
 
     public function render()

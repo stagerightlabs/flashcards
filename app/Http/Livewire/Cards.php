@@ -15,7 +15,7 @@ class Cards extends Component
 
     public function receiveCard($card)
     {
-        $this->cards->push(Card::findByUlid($card));
+        $this->cards->prepend(Card::findByUlid($card));
     }
 
     public function mount()
