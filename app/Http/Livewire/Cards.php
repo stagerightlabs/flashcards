@@ -21,6 +21,7 @@ class Cards extends Component
     public function mount()
     {
         $this->cards = Card::where('domain_id', auth()->user()->current_domain_id)
+            ->orderByDesc('created_at')
             ->get();
     }
 
