@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Card;
 use Livewire\Component;
-use Illuminate\Http\Request;
 
 class Cards extends Component
 {
@@ -19,8 +18,8 @@ class Cards extends Component
         $this->cards->push(Card::findByUlid($card));
     }
 
-    public function mount() {
-
+    public function mount()
+    {
         $this->cards = Card::where('domain_id', auth()->user()->current_domain_id)
             ->get();
     }

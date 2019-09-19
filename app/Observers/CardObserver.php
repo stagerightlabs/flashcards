@@ -23,7 +23,7 @@ class CardObserver
     /**
      * Handle the card "created" event.
      *
-     * @param  \App\Card  $card
+     * @param \App\Card $card
      * @return void
      */
     public function created(Card $card)
@@ -42,7 +42,7 @@ class CardObserver
     /**
      * Handle the card "updated" event.
      *
-     * @param  \App\Card  $card
+     * @param \App\Card $card
      * @return void
      */
     public function updated(Card $card)
@@ -61,7 +61,7 @@ class CardObserver
     /**
      * Handle the card "deleted" event.
      *
-     * @param  \App\Card  $card
+     * @param \App\Card $card
      * @return void
      */
     public function deleting(Card $card)
@@ -72,7 +72,7 @@ class CardObserver
     /**
      * Handle the card "restored" event.
      *
-     * @param  \App\Card  $card
+     * @param \App\Card $card
      * @return void
      */
     public function restored(Card $card)
@@ -83,7 +83,7 @@ class CardObserver
     /**
      * Handle the card "force deleted" event.
      *
-     * @param  \App\Card  $card
+     * @param \App\Card $card
      * @return void
      */
     public function forceDeleted(Card $card)

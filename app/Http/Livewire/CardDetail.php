@@ -11,7 +11,7 @@ class CardDetail extends Component
     protected $card;
     protected $listeners = [
         'cardSelected' => 'selectCardByUlid',
-        'requestCardClosure' => 'closeCard'
+        'requestCardClosure' => 'closeCard',
     ];
 
     public function mount()

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model
@@ -25,7 +24,7 @@ class Tenant extends Model
     }
 
     /**
-     * The users that belong to this tenancy
+     * The users that belong to this tenancy.
      *
      * @return HasMany
      */
