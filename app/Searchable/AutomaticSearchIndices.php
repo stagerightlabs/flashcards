@@ -54,7 +54,8 @@ trait AutomaticSearchIndices
                 return in_array($key, ['A', 'B', 'C', 'D']) && ! empty($value);
             })
             ->map(function ($value, $key) use ($language) {
-                return "setweight(to_tsvector('{$language}', '{$value}'), '{$key}')";
+                $content = self::sanitizeTSVectorInput($value);
+                return "setweight(to_tsvector('{$language}', '{$content}'), '{$key}')";
             })
             ->implode(' || ');
 
@@ -78,5 +79,19 @@ trait AutomaticSearchIndices
             'C' => '',
             'D' => '',
         ];
+    }
+
+    /**
+     * Ensure the text that will be indexed does not contain problematic content.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected static function sanitizeTSVectorInput($input)
+    {
+        $decoded = htmlspecialchars_decode($input, ENT_QUOTES);
+        $stripped = str_replace(["'", '"'], '', $decoded);
+
+        return $stripped;
     }
 }
