@@ -1,4 +1,4 @@
-  @tailwind base;
+@tailwind base;
 
 @tailwind components;
 
@@ -30,7 +30,8 @@
 
 /* Cards */
 .card {
-  @apply font-serif bg-gray-100 text-gray-800 text-xl shadow rounded-sm;
+  @apply font-serif bg-gray-100 text-gray-800 text-xl shadow rounded-sm flex flex-col;
+  max-height: 80%;
 }
 
 .card header {

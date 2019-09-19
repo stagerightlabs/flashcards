@@ -49,7 +49,11 @@ class Card extends Model
      *
      * @var array
      */
-    protected $appends = ['snippet', 'is_longer_than_snippet'];
+    protected $appends = [
+        'snippet',
+        'formatted_body',
+        'is_longer_than_snippet'
+    ];
 
     /**
      * The length of computed snippets.
@@ -85,7 +89,7 @@ class Card extends Model
      */
     public function getSnippetAttribute()
     {
-        return substr($this->body, 0, $this->snippetLength);
+        return nl2br( substr($this->body, 0, $this->snippetLength) );
     }
 
     /**
@@ -96,5 +100,15 @@ class Card extends Model
     public function getIsLongerThanSnippetAttribute()
     {
         return strlen($this->body) > $this->snippetLength;
+    }
+
+    /**
+     * Return the body content as formatted text
+     *
+     * @return string
+     */
+    public function getFormattedBodyAttribute()
+    {
+        return nl2br($this->body);
     }
 }

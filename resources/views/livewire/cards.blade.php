@@ -4,7 +4,7 @@
     <header class="cursor-pointer" wire:click="select('{{ $card->ulid }}')">{{ $card->title }}</header>
     <article>
       <p wire:click="select('{{ $card->ulid }}')">
-        {{ $card->snippet }}{{ $card->is_longer_than_snippet ? '...' : '' }}
+        {!! $card->snippet !!}{{ $card->is_longer_than_snippet ? '...' : '' }}
         @svg('cheveron-outline-right', 'w-5 inline text-gray-500 cursor-pointer')
       </p>
     </article>

@@ -1,15 +1,15 @@
 <div>
   @if ($card)
   <div class="fixed inset-0 w-full h-screen flex items-center justify-center bg-smoke z-10">
-    <div class="card w-full md:w-5/6 z-20 mx-4">
+    <div class="card w-full md:w-5/6 z-20">
       <header class="flex justify-between">
         <span>{{ $card->title }}</span>
         <span class="pr-3">
           <button wire:click="closeCard">@svg('close', 'w-4')</button>
         </span>
       </header>
-      <article>
-        {{ $card->body }}
+      <article class="overflow-y-scroll h-full p-8">
+        {!! $card->FormattedBody !!}
       </article>
       @if ($card->source)
       <footer>{{ $card->source }}</footer>
