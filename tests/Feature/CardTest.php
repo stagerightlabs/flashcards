@@ -7,8 +7,10 @@ use App\User;
 use App\Domain;
 use App\Tenant;
 use Tests\TestCase;
+use Livewire\Livewire;
 use App\Searchable\SearchIndex;
 use Illuminate\Support\Facades\DB;
+use App\Http\Livewire\CreateCardForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CardTest extends TestCase
@@ -17,23 +19,23 @@ class CardTest extends TestCase
 
     public function test_a_user_can_add_a_new_card()
     {
+        $this->withoutExceptionHandling();
         $tenant = factory(Tenant::class)->create();
         $domain = factory(Domain::class)->create([
             'tenant_id' => $tenant,
         ]);
         $user = factory(User::class)->create([
             'tenant_id' => $tenant->id,
+            'current_domain_id' => $domain->id,
         ]);
         $this->actingAs($user);
 
-        $response = $this->post(route('cards.store'), [
-            'title' => 'Photosynthesis',
-            'body' => 'A chemical process whereby plants convert sunlight into energy.',
-            'source' => 'http://example.com',
-            'domain_id' => $domain->id,
-        ]);
+        Livewire::test(CreateCardForm::class)
+            ->set('title', 'Photosynthesis')
+            ->set('body', 'A chemical process whereby plants convert sunlight into energy.')
+            ->set('source', 'http://example.com')
+            ->call('createCard');
 
-        $response->assertSessionHas('success');
         $this->assertDatabaseHas('cards', [
             'title' => 'Photosynthesis',
             'body' => 'A chemical process whereby plants convert sunlight into energy.',
