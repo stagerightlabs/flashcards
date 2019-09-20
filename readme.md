@@ -1,4 +1,6 @@
 
 # Flashcards
 
-A tool for keeping track of domain knowledge
+A tool for keeping track of domain knowledge.
+
+wip.
