@@ -7,12 +7,16 @@
         <span>
           {{ $card->title }}
           <button class="text-gray-500" wire:click="enterEditMode">@svg('edit-pencil', 'w-4')</button>
+          <button class="text-gray-500" wire:click="deleteCard">@svg('trash', 'w-4')</button>
         </span>
         <span class="pr-3 text-gray-600">
           <button wire:click="closeCard">@svg('close', 'w-4')</button>
         </span>
       </header>
       <article class="overflow-y-scroll h-full p-8">
+        @if ($errorMessage)
+          <p class="w-full p-4 bg-gray-600 text-gray-100 rounded mb-4">{{ $errorMessage }}</p>
+        @endif
         {!! $card->FormattedBody !!}
       </article>
       @if ($card->source)

@@ -13,7 +13,8 @@ class Cards extends Component
 
     protected $listeners = [
         'card.created' => 'receiveCard',
-        'card.updated' => 'updateCard'
+        'card.updated' => 'updateCard',
+        'card.deleted' => 'removeCard',
     ];
 
     public function receiveCard($card)
@@ -28,6 +29,13 @@ class Cards extends Component
                 return $card->fresh();
             }
             return $card;
+        });
+    }
+
+    public function removeCard($ulid)
+    {
+        $this->cards = $this->cards->reject(function($card) use ($ulid) {
+            return $card->ulid == $ulid;
         });
     }
 

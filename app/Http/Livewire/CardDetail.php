@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class CardDetail extends Component
 {
+    const DEFAULT_ERROR_MESSAGE = "Oops - you cant do that.";
     public $ulid = '';
     public $mode = 'read';
     public $editTitle = '';
@@ -75,12 +76,25 @@ class CardDetail extends Component
 
             $this->enterReadMode();
         } else {
-            $this->errorMessage = "Oops - you cant do that.";
+            $this->errorMessage = self::DEFAULT_ERROR_MESSAGE;
         }
     }
 
     protected function setErrorMessage($message = '')
     {
         $this->errorMessage = $message;
+    }
+
+    public function deleteCard()
+    {
+        if (auth()->user()->can('delete', $this->card)) {
+            $this->card->delete();
+
+            $this->emit('card.deleted', $this->card->ulid);
+
+            $this->closeCard();
+        } else {
+            $this->errorMessage = self::DEFAULT_ERROR_MESSAGE;
+        }
     }
 }

@@ -55,6 +55,7 @@ class CardTest extends TestCase
 
     public function test_a_user_can_update_a_card()
     {
+        $this->withoutExceptionHandling();
         $tenant = factory(Tenant::class)->create();
         $domain = factory(Domain::class)->create([
             'tenant_id' => $tenant->id,
@@ -107,15 +108,15 @@ class CardTest extends TestCase
             'current_domain_id' => $domain->id,
         ]);
         $this->actingAs($user);
-
         $card = factory(Card::class)->create([
             'created_by' => $user->id,
             'domain_id' => $domain->id,
         ]);
 
-        $response = $this->delete(route('cards.destroy', $card->ulid));
+        Livewire::test(CardDetail::class)
+            ->call('selectCardByUlid', $card->ulid)
+            ->call('deleteCard');
 
-        $response->assertRedirect();
         $this->assertDatabaseMissing('cards', [
             'ulid' => $card->ulid,
         ]);
@@ -150,9 +151,11 @@ class CardTest extends TestCase
             'domain_id' => $domain->id,
         ]);
 
-        $response = $this->delete(route('cards.destroy', $card->ulid));
+        Livewire::test(CardDetail::class)
+            ->call('selectCardByUlid', $card->ulid)
+            ->call('deleteCard')
+            ->assertSee(CardDetail::DEFAULT_ERROR_MESSAGE);
 
-        $response->assertForbidden();
         $this->assertDatabaseHas('cards', [
             'ulid' => $card->ulid,
         ]);
@@ -187,9 +190,10 @@ class CardTest extends TestCase
             'domain_id' => $domain->id,
         ]);
 
-        $response = $this->delete(route('cards.destroy', $card->ulid));
+        Livewire::test(CardDetail::class)
+            ->call('selectCardByUlid', $card->ulid)
+            ->call('deleteCard');
 
-        $response->assertRedirect();
         $this->assertDatabaseMissing('cards', [
             'ulid' => $card->ulid,
         ]);
