@@ -11,11 +11,24 @@ class Cards extends Component
     protected $keyDown;
     protected $selected;
 
-    protected $listeners = ['cardCreated' => 'receiveCard'];
+    protected $listeners = [
+        'card.created' => 'receiveCard',
+        'card.updated' => 'updateCard'
+    ];
 
     public function receiveCard($card)
     {
         $this->cards->prepend(Card::findByUlid($card));
+    }
+
+    public function updateCard($ulid)
+    {
+        $this->cards = $this->cards->map(function($card) use ($ulid) {
+            if ($card->ulid == $ulid) {
+                return $card->fresh();
+            }
+            return $card;
+        });
     }
 
     public function mount()

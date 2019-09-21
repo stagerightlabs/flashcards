@@ -31,7 +31,7 @@ class CreateCardForm extends Component
             'domain_id' => auth()->user()->current_domain_id,
         ]);
 
-        $this->emit('cardCreated', $card->ulid);
+        $this->emit('card.created', $card->ulid);
         $this->closeCardModal();
     }
 

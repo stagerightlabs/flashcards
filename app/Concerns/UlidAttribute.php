@@ -22,7 +22,7 @@ trait UlidAttribute
         });
 
         static::saving(function ($model) {
-            $originalUlid = $model->getOriginal('id');
+            $originalUlid = $model->getOriginal('ulid');
             if ($originalUlid !== $model->ulid) {
                 $model->ulid = $originalUlid;
             }

@@ -9,6 +9,7 @@ use App\Tenant;
 use Tests\TestCase;
 use Livewire\Livewire;
 use App\Searchable\SearchIndex;
+use App\Http\Livewire\CardDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\CreateCardForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -69,18 +70,17 @@ class CardTest extends TestCase
             'domain_id' => $domain->id,
         ]);
 
-        $response = $this->post(route('cards.update', $card->ulid), [
-            'title' => 'Changed',
-            'body' => 'This has been changed.',
-            'source' => 'New Source',
-        ]);
+        Livewire::test(CardDetail::class)
+            ->call('selectCardByUlid', $card->ulid)
+            ->set('editTitle', 'Changed')
+            ->set('editBody', 'This has been changed')
+            ->set('editSource', 'New Source')
+            ->call('updateCard');
 
-        $response->assertRedirect();
-        $response->assertSessionHas('success');
         $this->assertDatabaseHas('cards', [
             'id' => $card->id,
             'title' => 'Changed',
-            'body' => 'This has been changed.',
+            'body' => 'This has been changed',
             'source' => 'New Source',
         ]);
 
@@ -202,20 +202,5 @@ class CardTest extends TestCase
             'searchable_id' => $card->id,
             'searchable_type' => 'App\Card',
         ]);
-    }
-
-    public function test_guests_cannot_add_cards()
-    {
-        $response = $this->post(route('cards.store'), [
-            'title' => 'Photosynthesis',
-            'body' => 'A chemical process whereby plants convert sunlight into energy.',
-        ]);
-
-        $response->assertRedirect();
-        $this->assertDatabaseMissing('cards', [
-            'title' => 'Photosynthesis',
-            'body' => 'A chemical process whereby plants convert sunlight into energy.',
-        ]);
-        $this->assertEquals(0, SearchIndex::count());
     }
 }
