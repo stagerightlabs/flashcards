@@ -25,7 +25,6 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         return view('home')
-            ->with('user', $request->user())
             ->with('domain', $request->domain());
     }
 }
