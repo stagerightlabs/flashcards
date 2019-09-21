@@ -109,6 +109,6 @@ class Card extends Model
      */
     public function getFormattedBodyAttribute()
     {
-        return nl2br($this->body);
+        return str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", nl2br($this->body));
     }
 }
