@@ -20,7 +20,6 @@ class CardTest extends TestCase
 
     public function test_a_user_can_add_a_new_card()
     {
-        $this->withoutExceptionHandling();
         $tenant = factory(Tenant::class)->create();
         $domain = factory(Domain::class)->create([
             'tenant_id' => $tenant,
