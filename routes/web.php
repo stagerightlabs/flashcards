@@ -19,13 +19,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('domains', 'DomainController@store')->name('domains.store');
     Route::post('domains/{ulid}', 'DomainController@update')->name('domains.update');
     Route::delete('domains/{ulid}', 'DomainController@destroy')->name('domains.destroy');
-
-    // Cards
-    Route::get('cards', 'CardController@index')->name('cards.index');
-    Route::get('cards/create', 'CardController@create')->name('cards.create');
-    Route::post('cards', 'CardController@store')->name('cards.store');
-    Route::get('cards/{ulid}', 'CardController@show')->name('cards.show');
-    Route::get('cards/{ulid}/edit', 'CardController@edit')->name('cards.edit');
-    Route::post('cards/{ulid}', 'CardController@update')->name('cards.update');
-    Route::delete('cards/{ulid}', 'CardController@destroy')->name('cards.destroy');
 });
