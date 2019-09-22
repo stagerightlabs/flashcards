@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Parsedown;
+use HTMLPurifier;
 use App\Concerns\UlidAttribute;
 use Illuminate\Database\Eloquent\Model;
 use App\Searchable\AutomaticSearchIndices;
@@ -89,7 +91,15 @@ class Card extends Model
      */
     public function getSnippetAttribute()
     {
-        return nl2br(substr($this->body, 0, $this->snippetLength));
+        $snippet = substr($this->body, 0, $this->snippetLength)
+            . ($this->is_longer_than_snippet ? '...' : '')
+            . ' '
+            . svg_image(
+                'cheveron-outline-right',
+                'w-5 inline text-gray-500 cursor-pointer'
+            )->toHtml();
+
+        return Parsedown::instance()->text($snippet);
     }
 
     /**
@@ -107,8 +117,30 @@ class Card extends Model
      *
      * @return string
      */
-    public function getFormattedBodyAttribute()
+    public function getHtmlAttribute()
     {
-        return str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", nl2br($this->body));
+        $purifier = new HTMLPurifier;
+
+        $content = Parsedown::instance()
+            ->setBreaksEnabled(true)
+            ->text(str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $this->body));
+
+        return $purifier->purify($content);
+    }
+
+    /**
+     * Save the model to the database.
+     *
+     * @param  array  $options
+     * @return bool
+     */
+    public function save(array $options = [])
+    {
+        $purifier = new HTMLPurifier;
+
+        $this->title = $purifier->purify($this->title);
+        $this->source = $purifier->purify($this->source);
+
+        return parent::save($options);
     }
 }

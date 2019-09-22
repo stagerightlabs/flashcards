@@ -17,7 +17,7 @@
         @if ($errorMessage)
           <p class="w-full p-4 bg-gray-600 text-gray-100 rounded mb-4">{{ $errorMessage }}</p>
         @endif
-        {!! $card->FormattedBody !!}
+        {!! $card->html !!}
       </article>
       @if ($card->source)
       <footer>{{ $card->source }}</footer>
