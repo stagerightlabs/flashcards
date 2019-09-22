@@ -46,4 +46,8 @@
   @apply text-base p-2 text-gray-700 bg-gray-200;
 }
 
+.rotate-260 {
+  transform: rotate(260deg);
+}
+
 @tailwind utilities;
