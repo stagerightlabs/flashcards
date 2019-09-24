@@ -53,41 +53,6 @@ class CardTest extends TestCase
         $this->assertNotNull($searchIndex->vector);
     }
 
-    public function test_a_user_cannot_add_malicious_content_to_a_card()
-    {
-        $tenant = factory(Tenant::class)->create();
-        $domain = factory(Domain::class)->create([
-            'tenant_id' => $tenant,
-        ]);
-        $user = factory(User::class)->create([
-            'tenant_id' => $tenant->id,
-            'current_domain_id' => $domain->id,
-        ]);
-        $this->actingAs($user);
-
-        Livewire::test(CreateCardForm::class)
-            ->set('title', 'Photosynthesis<script>alert();</script>')
-            ->set('body', 'A chemical process whereby <script>alert();</script>plants convert sunlight into energy.')
-            ->set('source', 'http://example.com<script>alert();</script>')
-            ->call('createCard');
-
-        $this->assertDatabaseHas('cards', [
-            'title' => 'Photosynthesis',
-            'body' => 'A chemical process whereby plants convert sunlight into energy.',
-            'source' => 'http://example.com',
-            'domain_id' => $domain->id,
-            'created_by' => $user->id,
-        ]);
-        $this->assertDatabaseHas('activity_log', [
-            'subject_type' =>  'App\Card',
-        ]);
-
-        $card = Card::first();
-        $searchIndex = SearchIndex::first();
-        $this->assertTrue($searchIndex->subject->is($card));
-        $this->assertNotNull($searchIndex->vector);
-    }
-
     public function test_a_user_can_update_a_card()
     {
         $this->withoutExceptionHandling();
