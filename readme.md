@@ -5,6 +5,7 @@ A tool for keeping track of domain knowledge.
 
 wip.
 
+Testing chipper ci...
 
 ### Resources
 
