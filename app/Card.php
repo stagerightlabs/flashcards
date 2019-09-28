@@ -53,7 +53,7 @@ class Card extends Model
      */
     protected $appends = [
         'snippet',
-        'formatted_body',
+        'html',
         'is_longer_than_snippet',
     ];
 
