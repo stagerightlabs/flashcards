@@ -10,6 +10,7 @@ $factory->define(Card::class, function (Faker $faker) {
         'title' => $faker->words(mt_rand(1, 5), true),
         'body' => $faker->paragraph(),
         'source' => $faker->optional()->url(),
+        'source_pages' => null,
         'created_by' => function () {
             return factory(User::class)->create()->id;
         },

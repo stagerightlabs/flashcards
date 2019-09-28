@@ -10,6 +10,7 @@ class CreateCardForm extends Component
     public $title;
     public $body;
     public $source;
+    public $pageNumber;
     public $visible = false;
     protected $listeners = [
         'requestCreateCardModal' => 'showCreateCardModal',
@@ -27,6 +28,7 @@ class CreateCardForm extends Component
             'title' => $this->title,
             'body' => $this->body,
             'source' => $this->source,
+            'source_pages' => $this->pageNumber,
             'created_by' => auth()->user()->id,
             'domain_id' => auth()->user()->current_domain_id,
         ]);
@@ -46,6 +48,7 @@ class CreateCardForm extends Component
         $this->title = '';
         $this->body = '';
         $this->source = '';
+        $this->pageNumber = '';
     }
 
     public function render()

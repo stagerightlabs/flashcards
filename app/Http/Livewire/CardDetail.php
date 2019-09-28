@@ -13,6 +13,7 @@ class CardDetail extends Component
     public $editTitle = '';
     public $editBody = '';
     public $editSource = '';
+    public $editPageNumber = '';
     public $errorMessage = '';
     protected $card;
     protected $listeners = [
@@ -53,6 +54,7 @@ class CardDetail extends Component
         $this->editTitle = $this->card->title;
         $this->editBody = $this->card->body;
         $this->editSource = $this->card->source;
+        $this->editPageNumber = $this->card->source_pages;
         $this->mode = 'edit';
     }
 
@@ -70,6 +72,7 @@ class CardDetail extends Component
             $this->card->title = $this->editTitle;
             $this->card->body = $this->editBody;
             $this->card->source = $this->editSource;
+            $this->card->source_pages = $this->editPageNumber;
             $this->card->save();
 
             $this->emit('card.updated', $this->card->ulid);

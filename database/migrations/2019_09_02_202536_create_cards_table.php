@@ -19,6 +19,7 @@ class CreateCardsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('source')->nullable();
+            $table->string('source_pages')->nullable();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('domain_id');
             $table->timestamps();

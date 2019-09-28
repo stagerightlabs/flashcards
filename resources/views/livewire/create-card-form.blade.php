@@ -24,6 +24,13 @@
             <p class="text-gray-800">{{ $message }}</p>
           @enderror
         </div>
+        <div class="field mb-4">
+          <label for="pageNumber" class="text-gray-600 text-lg">Page Number:</label>
+          <input type="text" name="pageNumber" id="pageNumber" wire:model="pageNumber" class="w-full h-12 bg-gray-100 font-serif p-2 text-lg text-gray-800 border">
+          @error('pageNumber')
+            <p class="text-gray-800">{{ $message }}</p>
+          @enderror
+        </div>
       </form>
       <footer class="flex justify-between">
         <button wire:click="createCard" class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Save</button>

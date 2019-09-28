@@ -34,12 +34,14 @@ class CardTest extends TestCase
             ->set('title', 'Photosynthesis')
             ->set('body', 'A chemical process whereby plants convert sunlight into energy.')
             ->set('source', 'http://example.com')
+            ->set('pageNumber', '42')
             ->call('createCard');
 
         $this->assertDatabaseHas('cards', [
             'title' => 'Photosynthesis',
             'body' => 'A chemical process whereby plants convert sunlight into energy.',
             'source' => 'http://example.com',
+            'source_pages' => '42',
             'domain_id' => $domain->id,
             'created_by' => $user->id,
         ]);
@@ -75,6 +77,7 @@ class CardTest extends TestCase
             ->set('editTitle', 'Changed')
             ->set('editBody', 'This has been changed')
             ->set('editSource', 'New Source')
+            ->set('editPageNumber', '42')
             ->call('updateCard');
 
         $this->assertDatabaseHas('cards', [
@@ -82,6 +85,7 @@ class CardTest extends TestCase
             'title' => 'Changed',
             'body' => 'This has been changed',
             'source' => 'New Source',
+            'source_pages' => '42',
         ]);
 
         $activity = DB::table('activity_log')
