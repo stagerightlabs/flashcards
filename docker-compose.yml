@@ -20,3 +20,9 @@ services:
       - '54322:5432'
     environment:
       - EDITOR=vim
+
+  node:
+    image: node:10
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
