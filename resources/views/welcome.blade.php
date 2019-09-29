@@ -8,7 +8,14 @@
           @svg('document', 'w-32 rotate-260')
       </aside>
       <article class="">
-        <a href="{{ route('auth.google') }}" class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Enter</a>
+        <p class="text-center mb-4">
+          <a href="{{ route('auth.google') }}" class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Enter</a>
+        </p>
+        <p class="text-xs text-gray-600 text-center">
+          <a href="{{ route('privacy.policy') }}">Privacy</a>
+          |
+          <a href="{{ route('terms.of.service') }}">Terms</a>
+        </p>
       </article>
     </div>
   </div>

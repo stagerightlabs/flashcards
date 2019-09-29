@@ -5,8 +5,11 @@ Route::get('auth/google', 'Auth\GoogleLoginController@redirectToProvider')->name
 Route::get('auth/google/callback', 'Auth\GoogleLoginController@handleProviderCallback')->name('auth.google.callback');
 Route::get('auth/logout', 'Auth\LogoutController@logout')->name('logout');
 
-// Home page
+// Guest Pages
 Route::get('welcome', 'WelcomeController@index')->name('welcome');
+Route::get('privacy-policy', 'PrivacyPolicy')->name('privacy.policy');
+Route::get('terms-of-service', 'TermsOfService')->name('terms.of.service');
+
 
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
