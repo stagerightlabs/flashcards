@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Tenant;
+use App\Mail\UserRegistered;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleLoginController extends Controller
@@ -53,6 +55,11 @@ class GoogleLoginController extends Controller
             'avatar' => $oauth->avatar,
             'tenant_id' => $tenant->id,
         ]);
+
+        // Send an admin notification.
+        if ($notify = config('flashcards.admin.notify')) {
+            Mail::to($notify)->queue(new UserRegistered($user));
+        }
 
         // Initiate the user session
         return $this->loginUserAndRedirect($user);
