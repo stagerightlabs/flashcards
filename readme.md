@@ -33,3 +33,4 @@ NB:
 - [Tailwind CSS](https://tailwindcss.com)
 - [Zondicons](https://www.zondicons.com)
 - [Laravel Mix](https://laravel-mix.com/)
+- Icon made by [Freepik](https://www.freepik.com/home) from [www.flaticon.com](http://www.flaticon.com/)
