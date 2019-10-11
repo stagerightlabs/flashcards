@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Domains
     Route::get('domains/create', 'DomainController@create')->name('domains.create');
+    Route::post('domains/switch', 'DomainSwitchingController@store')->name('domains.switch');
     Route::post('domains', 'DomainController@store')->name('domains.store');
     Route::post('domains/{ulid}', 'DomainController@update')->name('domains.update');
     Route::delete('domains/{ulid}', 'DomainController@destroy')->name('domains.destroy');
