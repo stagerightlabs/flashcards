@@ -1,11 +1,18 @@
 @extends('layout')
 
 @section('content')
+
+@if (session()->has('error'))
+<div class="w-full text-center bg-gray-100 text-gray-800">
+  <p class="p-1">{{ session()->get('error') }}</p>
+</div>
+@endif
+
 <div class="fixed inset-0 w-full h-screen flex items-center justify-center">
   <div class="w-full sm:w-64 bg-gray-100 shadow-xl rounded-sm p-8 m-4">
     <div class="flex flex-col items-center">
       <aside class="text-gray-500 mb-8">
-          @svg('document', 'w-32 rotate-260')
+        @svg('document', 'w-32 rotate-260')
       </aside>
       <article class="">
         <p class="text-center mb-4">

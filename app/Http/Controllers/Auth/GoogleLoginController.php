@@ -45,6 +45,12 @@ class GoogleLoginController extends Controller
 
         // The user account does not exist
 
+        // Make sure the account has a domain attribute available
+        if (!array_key_exists('hd', $oauth->user)) {
+            session()->flash('error', 'Registration is temporarily unavailable to generic google accounts; please use a g-suite account instead.');
+            return redirect()->route('welcome');
+        }
+
         // Fetch the tenant
         $tenant = Tenant::firstOrCreate(['name' => $oauth->user['hd']]);
 
