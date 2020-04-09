@@ -22,7 +22,7 @@ services:
       - EDITOR=vim
 
   node:
-    image: node:10
+    image: node:12
     volumes:
       - .:/var/www
     working_dir: /var/www
