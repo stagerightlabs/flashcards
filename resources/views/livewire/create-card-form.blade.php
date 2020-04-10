@@ -50,14 +50,12 @@ var escapeHandler = function(e) {
   }
 };
 
-document.addEventListener('livewire:available', function () {
-  window.livewire.on('requestCreateCardModal', function() {
-    document.addEventListener('keydown', escapeHandler);
-  });
+window.livewire.on('requestCreateCardModal', function() {
+  document.addEventListener('keydown', escapeHandler);
+});
 
-  window.livewire.on('requestModalClosure', function(ulid) {
-    document.removeEventListener('keydown', escapeHandler);
-  });
+window.livewire.on('requestModalClosure', function(ulid) {
+  document.removeEventListener('keydown', escapeHandler);
 });
 </script>
 @endpush

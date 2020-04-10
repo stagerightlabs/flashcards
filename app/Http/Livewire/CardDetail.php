@@ -15,7 +15,7 @@ class CardDetail extends Component
     public $editSource = '';
     public $editPageNumber = '';
     public $errorMessage = '';
-    protected $card;
+    public $card;
     protected $listeners = [
         'cardSelected' => 'selectCardByUlid',
         'requestCardClosure' => 'closeCard',

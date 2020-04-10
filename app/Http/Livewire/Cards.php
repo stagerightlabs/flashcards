@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class Cards extends Component
 {
-    protected $cards;
-    protected $keyDown;
-    protected $selected;
+    public $cards;
+    public $keyDown;
+    public $selected;
 
     protected $listeners = [
         'card.created' => 'receiveCard',

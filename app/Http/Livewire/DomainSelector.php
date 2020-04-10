@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class DomainSelector extends Component
 {
-    protected $domains;
+    public $domains;
 
     public $selectedDomainUlid;
 

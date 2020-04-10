@@ -85,21 +85,19 @@ document.addEventListener("livewire:load", function(event) {
   }
 })
 
-document.addEventListener('livewire:available', function () {
-  window.livewire.on('openCard', function(ulid) {
-    if (ulid) {
-      var pageUrl = '?card=' + ulid;
-      window.history.pushState('', '', pageUrl);
-    }
-    document.addEventListener('keydown', escapeHandler);
-  });
+window.livewire.on('openCard', function(ulid) {
+  if (ulid) {
+    var pageUrl = '?card=' + ulid;
+    window.history.pushState('', '', pageUrl);
+  }
+  document.addEventListener('keydown', escapeHandler);
+});
 
-  window.livewire.on('closeCard', function(ulid) {
-    if (ulid) {
-      window.history.pushState('', '', '/');
-      document.removeEventListener('keydown', escapeHandler);
-    }
-  });
+window.livewire.on('closeCard', function(ulid) {
+  if (ulid) {
+    window.history.pushState('', '', '/');
+    document.removeEventListener('keydown', escapeHandler);
+  }
 });
 </script>
 @endpush
