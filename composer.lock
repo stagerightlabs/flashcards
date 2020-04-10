@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "539b27070a9f002a43f331d55fea0e71",
+    "content-hash": "a26bc4daaffd9f7cf1151371afb7e483",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1564,16 +1564,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.3.0",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
+                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
-                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
+                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
                 "shasum": ""
             },
             "require": {
@@ -1612,7 +1612,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-11-08T13:50:10+00:00"
+            "time": "2020-04-10T16:34:50+00:00"
         },
         {
             "name": "nothingworks/blade-svg",
@@ -2965,22 +2965,22 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.2.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a"
+                "reference": "8ec4695c5c6fa28d952c0f361e02997e84920354"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1e351d2257de312dfa3bdb5544b55e587bd4c00a",
-                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/8ec4695c5c6fa28d952c0f361e02997e84920354",
+                "reference": "8ec4695c5c6fa28d952c0f361e02997e84920354",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0 - 5.8 | ^6.0",
+                "illuminate/support": "5.0 - 5.8 | ^6.0 | ^7.0",
                 "php": "^7.1",
-                "sentry/sdk": "^2.0"
+                "sentry/sdk": "^2.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "2.14.*",
@@ -2991,7 +2991,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.x-dev",
+                    "dev-0.x": "0.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -3029,7 +3030,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-09-03T07:39:44+00:00"
+            "time": "2020-04-01T10:30:44+00:00"
         },
         {
             "name": "spatie/laravel-activitylog",
@@ -5226,16 +5227,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.16.1",
+            "version": "v2.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "c8afb599858876e95e8ebfcd97812d383fa23f02"
+                "reference": "c460a3cbaa58f983fe026cd52c45950bf61e9239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c8afb599858876e95e8ebfcd97812d383fa23f02",
-                "reference": "c8afb599858876e95e8ebfcd97812d383fa23f02",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c460a3cbaa58f983fe026cd52c45950bf61e9239",
+                "reference": "c460a3cbaa58f983fe026cd52c45950bf61e9239",
                 "shasum": ""
             },
             "require": {
@@ -5271,6 +5272,7 @@
                 "symfony/yaml": "^3.0 || ^4.0 || ^5.0"
             },
             "suggest": {
+                "ext-dom": "For handling output formats in XML",
                 "ext-mbstring": "For handling non-UTF8 characters in cache signature.",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "For IsIdenticalString constraint.",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "For XmlMatchesXsd constraint.",
@@ -5293,6 +5295,7 @@
                     "tests/Test/IntegrationCaseFactory.php",
                     "tests/Test/IntegrationCaseFactoryInterface.php",
                     "tests/Test/InternalIntegrationCaseFactory.php",
+                    "tests/Test/IsIdenticalConstraint.php",
                     "tests/TestCase.php"
                 ]
             },
@@ -5311,7 +5314,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2019-11-25T22:10:32+00:00"
+            "time": "2020-04-10T21:08:06+00:00"
         },
         {
             "name": "fzaninotto/faker",

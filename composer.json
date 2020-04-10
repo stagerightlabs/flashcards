@@ -18,7 +18,7 @@
         "livewire/livewire": "^1.0",
         "nothingworks/blade-svg": "^0.3.2",
         "predis/predis": "^1.1",
-        "sentry/sentry-laravel": "1.2.0",
+        "sentry/sentry-laravel": "^1.7",
         "spatie/laravel-activitylog": "^3.8"
     },
     "require-dev": {
