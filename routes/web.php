@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 // Authentication Routes...
 Route::get('auth/google', 'Auth\GoogleLoginController@redirectToProvider')->name('auth.google');
 Route::get('auth/google/callback', 'Auth\GoogleLoginController@handleProviderCallback')->name('auth.google.callback');

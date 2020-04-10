@@ -22,7 +22,8 @@ services:
       - EDITOR=vim
 
   node:
-    image: node:10
+    build:
+      context: docker/node
     volumes:
       - .:/var/www
     working_dir: /var/www

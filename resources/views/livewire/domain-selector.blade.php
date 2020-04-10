@@ -14,29 +14,26 @@
 
 @push('scripts')
 <script type="text/javascript">
-document.addEventListener('livewire:available', function () {
-  window.livewire.on('selectDomain',() => {
+window.livewire.on('selectDomain',() => {
+  var param = document.getElementById("domain-selector").value;
+  var form = document.createElement('form');
 
-    var param = document.getElementById("domain-selector").value;
-    var form = document.createElement('form');
+  var token_input = document.createElement("input");
+  token_input.name = '_token';
+  token_input.value = '{{ csrf_token() }}';
+  token_input.type = 'hidden';
+  form.appendChild(token_input);
 
-    var token_input = document.createElement("input");
-    token_input.name = '_token';
-    token_input.value = '{{ csrf_token() }}';
-    token_input.type = 'hidden';
-    form.appendChild(token_input);
+  var domain_input = document.createElement("input");
+  domain_input.name = 'domain';
+  domain_input.value = param;
+  domain_input.type = 'hidden';
+  form.appendChild(domain_input);
 
-    var domain_input = document.createElement("input");
-    domain_input.name = 'domain';
-    domain_input.value = param;
-    domain_input.type = 'hidden';
-    form.appendChild(domain_input);
-
-    form.action = '{{ route('domains.switch') }}';
-    form.method = 'POST';
-    document.body.appendChild(form);
-    form.submit();
-    });
+  form.action = '{{ route('domains.switch') }}';
+  form.method = 'POST';
+  document.body.appendChild(form);
+  form.submit();
 });
 </script>
 @endpush

@@ -14,11 +14,12 @@
   <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#718096">
   <meta name="msapplication-TileColor" content="#2b5797">
   <meta name="theme-color" content="#e2e8f0">
-  @livewireAssets
+  @livewireStyles
 </head>
 
 <body class="bg-gray-400 w-full h-full">
   @yield('content')
+  @livewireScripts
 </body>
 
 <script src="{{ mix('/js/app.js') }}"></script>

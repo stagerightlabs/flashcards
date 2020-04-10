@@ -12,6 +12,7 @@ class CreateCardForm extends Component
     public $source;
     public $pageNumber;
     public $visible = false;
+
     protected $listeners = [
         'requestCreateCardModal' => 'showCreateCardModal',
         'requestModalClosure' => 'closeCardModal',
