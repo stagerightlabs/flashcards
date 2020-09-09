@@ -20,6 +20,7 @@ services:
       - '54322:5432'
     environment:
       - EDITOR=vim
+      - POSTGRES_PASSWORD=secret
 
   node:
     build:
