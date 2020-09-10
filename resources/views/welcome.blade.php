@@ -12,7 +12,7 @@
   <div class="w-full sm:w-64 bg-gray-100 shadow-xl rounded-sm p-8 m-4">
     <div class="flex flex-col items-center">
       <aside class="text-gray-500 mb-8">
-        @svg('document', 'w-32 rotate-260')
+        @svg('document', ['class' => 'w-32 rotate-260'])
       </aside>
       <article class="">
         <p class="text-center mb-4">

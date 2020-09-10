@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.3-fpm-alpine
 
 LABEL maintainer="Ryan Durham <ryan@stagerightlabs.com>"
 
