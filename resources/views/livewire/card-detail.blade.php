@@ -6,11 +6,11 @@
       <header class="flex justify-between">
         <span>
           {{ $card->title }}
-          <button class="text-gray-500" wire:click="enterEditMode">@svg('edit-pencil', 'w-4')</button>
-          <button class="text-gray-500" wire:click="deleteCard">@svg('trash', 'w-4')</button>
+          <button class="text-gray-500" wire:click="enterEditMode">@svg('edit-pencil', ['class' => 'w-4'])</button>
+          <button class="text-gray-500" wire:click="deleteCard">@svg('trash', ['class' => 'w-4'])</button>
         </span>
         <span class="pr-3 text-gray-600">
-          <button wire:click="closeCard">@svg('close', 'w-4')</button>
+          <button wire:click="closeCard">@svg('close', ['class' => 'w-4'])</button>
         </span>
       </header>
       <article class="overflow-y-scroll h-full p-8">
