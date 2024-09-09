@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^5.0.0",
-        "axios": "^1.6.0",
+        "axios": "^1.7.4",
         "cross-env": "^5.1",
         "laravel-mix": "^6.0.49",
         "resolve-url-loader": "^5.0.0",
